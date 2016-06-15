@@ -1,0 +1,13 @@
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+
+[jnt:carousel] > jnt:content, jmix:droppableContent
+
+[jnt:carouselImage] > jnt:content
+ - image (weakreference, picker[type='image']) mandatory
+
+[jnt:carouselText] > jnt:content
+ - title (string)
+ - text (string, textarea)
+ - quoteAuthor (string)
+
