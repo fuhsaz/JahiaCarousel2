@@ -38,6 +38,13 @@
 
 <c:if test="${renderContext.editMode}">
   <template:module path="*"/>
+  <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
+    <c:set var="pic" value="${curNode.properties['image']}"/>
+    <c:url value="${pic.node.url}" var="imgUrl"></c:url>
+    <div class="item">
+    	<img src="${imgUrl}"/>
+    </div>
+  </c:forEach>
 </c:if>
 
 <c:set var="thisID" value="${currentNode.properties['id'].string}"/>

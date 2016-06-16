@@ -3,14 +3,18 @@ $(document).ready(function(){
   $('.carouselMain').each(function(){
     var thisID = $(this).attr('id');
     console.log("thisID", thisID);
-    var settings = {autoPlay:3000, items:3};
+    var settings = {autoPlay:2000};
   	var items;
     
     /* Number of items at max display size */
     searchString = getSS(thisID, 'Items');
-    console.log("searchString", searchString);
-    var itemsInput = $().text();
-    console.log("itemsInput", itemsInput);
+    /*console.log("searchString", searchString);*/
+    var itemsInput = $(searchString).text();
+    /*console.log("itemsInput", itemsInput);*/
+    if (!itemsInput.localeCompare('none')==0) {
+    	items = parseInt(itemsInput);
+       	settings.items = items;
+    }
     
     /* Call the owlCarousel() method with the constructed settings object */
     $(this).owlCarousel(settings);

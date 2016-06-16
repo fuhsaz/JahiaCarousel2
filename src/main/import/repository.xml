@@ -13,8 +13,8 @@
                     <src jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:folder">
                         <main jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:folder">
                             <resources jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:folder">
-                                <css jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:cssFolder">
-                                    <lastCSS.css jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:cssFile"/>
+                                <css jcr:primaryType="jnt:cssFolder">
+                                    <lastCSS.css jcr:primaryType="jnt:cssFile"/>
                                 </css>
                                 <javascript jcr:mixinTypes="jmix:sourceControl"
                                  jcr:primaryType="jnt:javascriptFolder">
@@ -28,9 +28,8 @@
                                         <carousel2.jsp jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:viewFile"/>
                                     </html>
                                 </jnt_carousel2>
-                                <META-INF jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:metaInfFolder">
-                                    <definitions.cnd jcr:mixinTypes="jmix:sourceControl"
-                                         jcr:primaryType="jnt:definitionFile"/>
+                                <META-INF jcr:primaryType="jnt:metaInfFolder">
+                                    <definitions.cnd jcr:primaryType="jnt:definitionFile"/>
                                 </META-INF>
                             </resources>
                         </main>
