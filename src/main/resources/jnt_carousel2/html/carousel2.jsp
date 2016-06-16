@@ -43,9 +43,22 @@
 <c:set var="thisID" value="${currentNode.properties['id'].string}"/>
 <c:set var="uniqueID" value="carousel${thisID}"/>
 
+<div class="hiddenVars ${uniqueID}">
+  
+  <!-- Number of items per page -->
+  <!-- At max browser width -->
+  <c:if test="${not empty currentNode.properties['items']}">
+      <c:set var="items" value="${currentNode.properties['items'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['items']}">
+      <c:set var="items" value="none"/>
+	  </c:if>
+    <div class="${uniqueID} carouselItems">${items}</div>
+  
+</div>
+
 <div class="owl-carousel carouselMain" id="${uniqueID}">
 
- 
 <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
   <c:set var="pic" value="${curNode.properties['image']}"/>
   <c:url value="${pic.node.url}" var="imgUrl"></c:url>

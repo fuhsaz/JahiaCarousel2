@@ -16,6 +16,11 @@
                                 <css jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:cssFolder">
                                     <lastCSS.css jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:cssFile"/>
                                 </css>
+                                <javascript jcr:mixinTypes="jmix:sourceControl"
+                                 jcr:primaryType="jnt:javascriptFolder">
+                                    <custom.js jcr:mixinTypes="jmix:sourceControl"
+                                   jcr:primaryType="jnt:javascriptFile"/>
+                                </javascript>
                                 <jnt_carousel2 jcr:mixinTypes="jmix:sourceControl"
                                     jcr:primaryType="jnt:nodeTypeFolder">
                                     <html jcr:mixinTypes="jmix:sourceControl"

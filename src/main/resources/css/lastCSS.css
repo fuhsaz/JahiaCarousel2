@@ -1,6 +1,9 @@
 .carouselMain{
   margin: 10px auto;
 }
+.hiddenVars{
+  display:none;
+}
 .item {
   margin:3px;
 }

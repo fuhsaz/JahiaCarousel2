@@ -5,6 +5,7 @@
  + * (jnt:carousel2Image)
  + * (jnt:carousel2Text)
  - id (decimal, text) mandatory
+ - items (decimal, text)
 
 [jnt:carousel2Image] > jnt:content
  - image (weakreference, picker[type='image']) mandatory
