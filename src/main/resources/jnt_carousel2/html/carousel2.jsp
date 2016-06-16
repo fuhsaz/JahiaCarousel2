@@ -52,7 +52,7 @@
 
 <div class="hiddenVars ${uniqueID}">
   
-  <!-- Number of items per page -->
+  <!-- ================== Number of items per page ======================== -->
   <!-- At max browser width -->
   <c:if test="${not empty currentNode.properties['items']}">
       <c:set var="items" value="${currentNode.properties['items'].string}"/>
@@ -74,6 +74,27 @@
   	</c:if>
   </c:if>
   <div class="${uniqueID} carouselSingleItem">${singleItem}</div>
+  
+  <!-- ================== Navigation Options ======================== -->
+  <!-- Autoplay -->
+  <c:if test="${empty currentNode.properties['autoPlay']}">
+      <c:set var="autoPlay" value="none"/>
+  </c:if>
+  <c:if test="${not empty currentNode.properties['autoPlay']}">
+      <c:if test="${currentNode.properties['autoPlay'].string == 'true'}">
+   	  	  <c:if test="${empty currentNode.properties['autoPlayTime']}">
+        	  <c:set var="autoPlay" value="5000"/>
+      	  </c:if>
+          <c:if test="${not empty currentNode.properties['autoPlayTime']}">
+              <c:set var="autoPlay" value="${currentNode.properties['autoPlayTime'].string}"/>
+      	  </c:if>
+  	  </c:if>
+      <c:if test="${currentNode.properties['autoPlay'].string == 'false'}">
+      	    <c:set var="autoPlay" value="false"/>
+      </c:if>
+  </c:if>
+  <div class="${uniqueID} carouselAutoPlay">${autoPlay}</div>
+  
   
 </div>
 

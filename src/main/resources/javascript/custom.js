@@ -1,22 +1,23 @@
 $(document).ready(function(){
   console.log("ready");
   $('.carouselMain').each(function(){
-    var thisID = $(this).attr('id');
-    console.log("thisID", thisID);
-    var settings = {autoPlay:2000};
+    var curID = $(this).attr('id');
+    console.log("curID", curID);
+    var settings = {};
   	var items;
     var singleItem;
+    var autoPlay
     
     /* ===========   Number of items onscreen   ================= */
     /* Number of items at max display size */
-    searchString = getSS(thisID, 'Items');
+    searchString = getSS(curID, 'Items');
     var itemsInput = $(searchString).text();
     if (!itemsInput.localeCompare('none')==0) {
     	items = parseInt(itemsInput);
        	settings.items = items;
     }
     /* Option to display only a single item */
-    var tempSingle = $(getSS(thisID, 'SingleItem')).text();
+    var tempSingle = $(getSS(curID, 'SingleItem')).text();
     if (!tempSingle.localeCompare('none')==0) {
     	if (tempSingle.localeCompare('true') == 0) {
      		singleItem = true;
@@ -26,7 +27,18 @@ $(document).ready(function(){
       	settings.singleItem = singleItem;
     }
     
-    
+    /* ===========   Navigation Options   ================= */
+    /* Autoplay */
+    autoPlayTemp = $(getSS(curID, 'AutoPlay')).text();
+    if (!autoPlayTemp.localeCompare('none') == 0) {
+    	if (autoPlayTemp.localeCompare('false') == 0) {
+     	  autoPlay = false;
+        } else {
+          var autoPlayTime = parseInt(autoPlayTemp);
+          autoPlay = autoPlayTime;
+        }
+      	settings.autoPlay = autoPlay;
+    }
     /* Call the owlCarousel() method with the constructed settings object */
     $(this).owlCarousel(settings);
     

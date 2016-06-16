@@ -7,6 +7,8 @@
  - id (decimal, text) mandatory
  - items (decimal, text)
  - singleItem (boolean)
+ - autoPlay (boolean)
+ - autoPlayTime (decimal, text)
 
 [jnt:carousel2Image] > jnt:content
  - image (weakreference, picker[type='image']) mandatory
