@@ -61,6 +61,19 @@
       <c:set var="items" value="none"/>
 	  </c:if>
     <div class="${uniqueID} carouselItems">${items}</div>
+  <!-- Option to display only a single item -->
+  <c:if test="${empty currentNode.properties['items']}">
+      <c:set var="singleItem" value="none"/>
+  </c:if>
+  <c:if test="${not empty currentNode.properties['items']}">
+  	<c:if test="${currentNode.properties['singleItem'].string == 'true'}">
+      	<c:set var="singleItem" value="true"/>
+  	</c:if>
+  	<c:if test="${currentNode.properties['singleItem'].string == 'false'}">
+  		<c:set var="singleItem" value="false"/>
+  	</c:if>
+  </c:if>
+  <div class="${uniqueID} carouselSingleItem">${singleItem}</div>
   
 </div>
 

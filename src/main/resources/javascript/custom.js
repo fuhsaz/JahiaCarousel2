@@ -5,16 +5,27 @@ $(document).ready(function(){
     console.log("thisID", thisID);
     var settings = {autoPlay:2000};
   	var items;
+    var singleItem;
     
+    /* ===========   Number of items onscreen   ================= */
     /* Number of items at max display size */
     searchString = getSS(thisID, 'Items');
-    /*console.log("searchString", searchString);*/
     var itemsInput = $(searchString).text();
-    /*console.log("itemsInput", itemsInput);*/
     if (!itemsInput.localeCompare('none')==0) {
     	items = parseInt(itemsInput);
        	settings.items = items;
     }
+    /* Option to display only a single item */
+    var tempSingle = $(getSS(thisID, 'SingleItem')).text();
+    if (!tempSingle.localeCompare('none')==0) {
+    	if (tempSingle.localeCompare('true') == 0) {
+     		singleItem = true;
+    	} else {
+     		singleItem = false;
+    	}
+      	settings.singleItem = singleItem;
+    }
+    
     
     /* Call the owlCarousel() method with the constructed settings object */
     $(this).owlCarousel(settings);

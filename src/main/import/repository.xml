@@ -28,8 +28,9 @@
                                         <carousel2.jsp jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:viewFile"/>
                                     </html>
                                 </jnt_carousel2>
-                                <META-INF jcr:primaryType="jnt:metaInfFolder">
-                                    <definitions.cnd jcr:primaryType="jnt:definitionFile"/>
+                                <META-INF jcr:mixinTypes="jmix:sourceControl" jcr:primaryType="jnt:metaInfFolder">
+                                    <definitions.cnd jcr:mixinTypes="jmix:sourceControl"
+                                         jcr:primaryType="jnt:definitionFile"/>
                                 </META-INF>
                             </resources>
                         </main>
