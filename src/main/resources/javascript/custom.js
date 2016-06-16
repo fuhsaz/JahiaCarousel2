@@ -10,6 +10,7 @@ $(document).ready(function(){
     var autoPlay;
     var navigation;
     var pagination;
+    var paginationNumbers;
     
     /* ===========   Number of items onscreen   ================= */
     /* Number of items at max display size */
@@ -55,6 +56,7 @@ $(document).ready(function(){
     
     /* ================== Pagination Options ======================== */
     /* Display/Hide pagination */
+    /* Switched true/false in jsp file because the default is to show them */
     var tempPag = $(getSS(curID, 'Pagination')).text();
     console.log(tempPag);
     if (!tempPag.localeCompare('none')==0) {
@@ -66,7 +68,16 @@ $(document).ready(function(){
       }
       settings.pagination = pagination;
     }
-    
+    /* Show pagination numbers */
+    var tempPN = $(getSS(curID, 'PaginationNumbers')).text();
+    if (!tempPN.localeCompare('none')==0) {
+      if (tempPN.localeCompare('true') == 0) {
+        paginationNumbers = true;
+      } else {
+        paginationNumbers = false;
+      }
+      settings.paginationNumbers = paginationNumbers;
+    }
     
     
     /* Call the owlCarousel() method with the constructed settings object */
@@ -75,6 +86,8 @@ $(document).ready(function(){
     
   });
     
+  
+  
   /* To generate the '.carouselID .carouselDesiredVariable' selector for jquery */
   function getSS(id, varName){
     var ss = ".";
@@ -84,12 +97,6 @@ $(document).ready(function(){
     return ss;
   };
   
-  /*
-  $('carousel1').owlCarousel({
-    autoPlay: 3000,
-    singleItem: true
-  });
-  */
   
   
   

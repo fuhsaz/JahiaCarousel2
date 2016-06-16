@@ -11,6 +11,7 @@
  - autoPlayTime (decimal, text)
  - navigation (boolean)
  - pagination (boolean)
+ - paginationNumbers (boolean)
 
 [jnt:carousel2Image] > jnt:content
  - image (weakreference, picker[type='image']) mandatory

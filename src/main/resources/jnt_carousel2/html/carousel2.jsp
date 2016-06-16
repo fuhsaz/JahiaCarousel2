@@ -128,7 +128,19 @@
     </c:if>
   </c:if>
   <div class="${uniqueID} carouselPagination">${pagination}</div>
-  
+  <!-- enable/disable pagination numbers -->
+  <c:if test="${empty currentNode.properties['paginationNumbers']}">
+    <c:set var="paginationNumbers" value="none"/>
+  </c:if>
+  <c:if test="${not empty currentNode.properties['paginationNumbers']}">
+    <c:if test="${currentNode.properties['paginationNumbers'].string == 'true'}">
+      <c:set var="paginationNumbers" value="true"/>
+    </c:if>
+    <c:if test="${currentNode.properties['paginationNumbers'].string == 'false'}">
+      <c:set var="paginationNumbers" value="false"/>
+    </c:if>
+  </c:if>
+  <div class="${uniqueID} carouselPaginationNumbers">${paginationNumbers}</div>
   
   
   
