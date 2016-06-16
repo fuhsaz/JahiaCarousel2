@@ -5,7 +5,7 @@ $(document).ready(function(){
     /* JS Object to hold the settings for the carousel */
     var settings = {};
     /* variables to hold each setting, passed to owlCarousel function through the settings object */
-  	var items;
+    var items;
     var singleItem;
     var autoPlay;
     var navigation;
@@ -17,31 +17,42 @@ $(document).ready(function(){
     searchString = getSS(curID, 'Items');
     var itemsInput = $(searchString).text();
     if (!itemsInput.localeCompare('none')==0) {
-    	items = parseInt(itemsInput);
-       	settings.items = items;
+      items = parseInt(itemsInput);
+      settings.items = items;
     }
+    /* Change default desktop lower bound or number of items */
+    var isChanged = $(getSS(curID, 'ChangeDesktopItems')).text();
+    if (isChanged.localeCompare('changed')==0) {
+      var sizeChanged = $(getSS(curID, 'ChangeDesktopSize')).text();
+      var itemChanged = $(getSS(curID, 'ChangeDesktopItemNumber')).text();
+      var newDesktopSize = parseInt(sizeChanged);
+      var newDesktopItem = parseInt(itemChanged);
+      var newDesktopSizeArray = [newDesktopSize, newDesktopItem];
+      settings.itemsDesktop = newDesktopSizeArray;
+    }
+    
     /* Option to display only a single item */
     var tempSingle = $(getSS(curID, 'SingleItem')).text();
     if (!tempSingle.localeCompare('none')==0) {
-    	if (tempSingle.localeCompare('true') == 0) {
-     		singleItem = true;
-    	} else {
-     		singleItem = false;
-    	}
-      	settings.singleItem = singleItem;
+      if (tempSingle.localeCompare('true') == 0) {
+        singleItem = true;
+      } else {
+        singleItem = false;
+      }
+      settings.singleItem = singleItem;
     }
     
     /* ===========   Navigation Options   ================= */
     /* Autoplay */
     autoPlayTemp = $(getSS(curID, 'AutoPlay')).text();
     if (!autoPlayTemp.localeCompare('none') == 0) {
-    	if (autoPlayTemp.localeCompare('false') == 0) {
-     	  autoPlay = false;
-        } else {
-          var autoPlayTime = parseInt(autoPlayTemp);
-          autoPlay = autoPlayTime;
-        }
-      	settings.autoPlay = autoPlay;
+      if (autoPlayTemp.localeCompare('false') == 0) {
+        autoPlay = false;
+      } else {
+        var autoPlayTime = parseInt(autoPlayTemp);
+        autoPlay = autoPlayTime;
+      }
+      settings.autoPlay = autoPlay;
     }
     /* Enable/Disable Navigation Buttons */
     var tempNav = $(getSS(curID, 'Navigation')).text();
@@ -85,7 +96,7 @@ $(document).ready(function(){
     $(this).owlCarousel(settings);
     
   });
-    
+  
   
   
   /* To generate the '.carouselID .carouselDesiredVariable' selector for jquery */

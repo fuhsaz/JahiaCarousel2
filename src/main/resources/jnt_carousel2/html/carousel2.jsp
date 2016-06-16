@@ -57,16 +57,43 @@
 <c:if test="${renderContext.editMode}">
   <div class="${uniqueID}">
 </c:if>
+    
+    <!-- ================== Number of items per page ======================== -->
+    <!-- At max browser width -->
+    <c:if test="${not empty currentNode.properties['items']}">
+      <c:set var="items" value="${currentNode.properties['items'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['items']}">
+      <c:set var="items" value="none"/>
+    </c:if>
+    <div class="${uniqueID} carouselItems">${items}</div>
+    <!-- Set desktop browser width -->
+    <c:if test="${empty currentNode.properties['changeDesktopItems']}">
+      <c:set var="desktop" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['changeDesktopItems']}">
+      <!-- Check if size was changed, otherwise set to default -->
+      <c:if test="${not empty currentNode.properties['changeDesktopSize']}">
+        <c:set var="newDesktopSize" value="${currentNode.properties['changeDesktopSize'].string}"/>
+      </c:if>
+      <c:if test="${empty currentNode.properties['changeDesktopSize']}">
+        <c:set var="newDesktopSize" value="1199"/>
+      </c:if>
+      <div class="${uniqueID} carouselChangeDesktopSize">${newDesktopSize}</div>
+      
+      <!-- Check if number of items was changed, otherwise set to default -->
+      <c:if test="${not empty currentNode.properties['changeDesktopItemNumber']}"> 
+        <c:set var="newDesktopItemNumber" value="${currentNode.properties['changeDesktopItemNumber'].string}"/>
+      </c:if>
+      <c:if test="${empty currentNode.properties['changeDesktopItemNumber']}">
+        <c:set var="newDesktopItemNumber" value="4"/>
+      </c:if>
+      <div class="${uniqueID} carouselChangeDesktopItemNumber">${newDesktopItemNumber}</div>
+      
+      <c:set var="desktop" value="changed"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeDesktopItems">${desktop}</div>
 
-  <!-- ================== Number of items per page ======================== -->
-  <!-- At max browser width -->
-  <c:if test="${not empty currentNode.properties['items']}">
-    <c:set var="items" value="${currentNode.properties['items'].string}"/>
-  </c:if>
-  <c:if test="${empty currentNode.properties['items']}">
-    <c:set var="items" value="none"/>
-  </c:if>
-  <div class="${uniqueID} carouselItems">${items}</div>
   <!-- Option to display only a single item -->
   <c:if test="${empty currentNode.properties['items']}">
     <c:set var="singleItem" value="none"/>
