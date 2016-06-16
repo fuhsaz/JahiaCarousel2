@@ -42,56 +42,62 @@
     <c:set var="pic" value="${curNode.properties['image']}"/>
     <c:url value="${pic.node.url}" var="imgUrl"></c:url>
     <div class="item">
-    	<img src="${imgUrl}"/>
+      <img src="${imgUrl}"/>
     </div>
   </c:forEach>
+  
 </c:if>
 
 <c:set var="thisID" value="${currentNode.properties['id'].string}"/>
 <c:set var="uniqueID" value="carousel${thisID}"/>
 
-<div class="hiddenVars ${uniqueID}">
-  
+<c:if test="${not renderContext.editMode}">
+  <div class="hiddenVars ${uniqueID}">
+</c:if>
+<c:if test="${renderContext.editMode}">
+  <div class="${uniqueID}">
+</c:if>
+
   <!-- ================== Number of items per page ======================== -->
   <!-- At max browser width -->
   <c:if test="${not empty currentNode.properties['items']}">
-      <c:set var="items" value="${currentNode.properties['items'].string}"/>
-    </c:if>
-    <c:if test="${empty currentNode.properties['items']}">
-      <c:set var="items" value="none"/>
-	  </c:if>
-    <div class="${uniqueID} carouselItems">${items}</div>
+    <c:set var="items" value="${currentNode.properties['items'].string}"/>
+  </c:if>
+  <c:if test="${empty currentNode.properties['items']}">
+    <c:set var="items" value="none"/>
+  </c:if>
+  <div class="${uniqueID} carouselItems">${items}</div>
   <!-- Option to display only a single item -->
   <c:if test="${empty currentNode.properties['items']}">
-      <c:set var="singleItem" value="none"/>
+    <c:set var="singleItem" value="none"/>
   </c:if>
   <c:if test="${not empty currentNode.properties['items']}">
-  	<c:if test="${currentNode.properties['singleItem'].string == 'true'}">
-      	<c:set var="singleItem" value="true"/>
-  	</c:if>
-  	<c:if test="${currentNode.properties['singleItem'].string == 'false'}">
-  		<c:set var="singleItem" value="false"/>
-  	</c:if>
+    <c:if test="${currentNode.properties['singleItem'].string == 'true'}">
+      <c:set var="singleItem" value="true"/>
+    </c:if>
+    <c:if test="${currentNode.properties['singleItem'].string == 'false'}">
+      <c:set var="singleItem" value="false"/>
+    </c:if>
   </c:if>
   <div class="${uniqueID} carouselSingleItem">${singleItem}</div>
   
   <!-- ================== Navigation Options ======================== -->
   <!-- Autoplay -->
   <c:if test="${empty currentNode.properties['autoPlay']}">
-      <c:set var="autoPlay" value="none"/>
+    <c:set var="autoPlay" value="none"/>
   </c:if>
   <c:if test="${not empty currentNode.properties['autoPlay']}">
-      <c:if test="${currentNode.properties['autoPlay'].string == 'true'}">
-   	  	  <c:if test="${empty currentNode.properties['autoPlayTime']}">
-        	  <c:set var="autoPlay" value="5000"/>
-      	  </c:if>
-          <c:if test="${not empty currentNode.properties['autoPlayTime']}">
-              <c:set var="autoPlay" value="${currentNode.properties['autoPlayTime'].string}"/>
-      	  </c:if>
-  	  </c:if>
-      <c:if test="${currentNode.properties['autoPlay'].string == 'false'}">
-      	    <c:set var="autoPlay" value="false"/>
+    <c:if test="${currentNode.properties['autoPlay'].string == 'true'}">
+      <c:if test="${empty currentNode.properties['autoPlayTime']}">
+        <c:set var="autoPlay" value="5000"/>
       </c:if>
+      <c:if test="${not empty currentNode.properties['autoPlayTime']}">
+        <c:set var="autoPlay" value="${currentNode.properties['autoPlayTime'].string}"/>
+      </c:if>
+    </c:if>
+    <c:if test="${currentNode.properties['autoPlay'].string == 'false'}">
+      <c:set var="autoPlay" value="false"/>
+    </c:if>
   </c:if>
   <div class="${uniqueID} carouselAutoPlay">${autoPlay}</div>
   <!-- Show or Hide Navigation Buttons -->
@@ -100,7 +106,7 @@
   </c:if>
   <c:if test="${not empty currentNode.properties['navigation']}">
     <c:if test="${currentNode.properties['navigation'].string == 'true'}">
-        <c:set var="navigation" value="true"/>
+      <c:set var="navigation" value="true"/>
     </c:if>
     <c:if test="${currentNode.properties['navigation'].string == 'false'}">
       <c:set var="navigation" value="false"/>
@@ -108,16 +114,36 @@
   </c:if>
   <div class="${uniqueID} carouselNavigation">${navigation}</div>
   
-</div>
-
-<div class="owl-carousel carouselMain" id="${uniqueID}">
-
-<c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
-  <c:set var="pic" value="${curNode.properties['image']}"/>
-  <c:url value="${pic.node.url}" var="imgUrl"></c:url>
-  <div class="item">
-  	<img src="${imgUrl}"/>
-  </div>
-</c:forEach>
+  <!-- ================== Pagination Options ======================== -->
+  <!-- Show/Hide pagination -->
+  <c:if test="${empty currentNode.properties['pagination']}">
+    <c:set var="pagination" value="none"/>
+  </c:if>
+  <c:if test="${not empty currentNode.properties['pagination']}">
+    <c:if test="${currentNode.properties['pagination'].string == 'true'}">
+      <c:set var="pagination" value="false"/>
+    </c:if>
+    <c:if test="${currentNode.properties['pagination'].string == 'false'}">
+      <c:set var="pagination" value="true"/>
+    </c:if>
+  </c:if>
+  <div class="${uniqueID} carouselPagination">${pagination}</div>
+  
+  
+  
+  
   
 </div>
+<c:if test="${not renderContext.editMode}">  
+  <div class="owl-carousel carouselMain" id="${uniqueID}">
+    
+    <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
+      <c:set var="pic" value="${curNode.properties['image']}"/>
+      <c:url value="${pic.node.url}" var="imgUrl"></c:url>
+      <div class="item">
+        <img src="${imgUrl}"/>
+      </div>
+    </c:forEach>
+    
+  </div>
+</c:if>

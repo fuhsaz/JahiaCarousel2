@@ -2,11 +2,14 @@ $(document).ready(function(){
   console.log("ready");
   $('.carouselMain').each(function(){
     var curID = $(this).attr('id');
-    console.log("curID", curID);
+    /* JS Object to hold the settings for the carousel */
     var settings = {};
+    /* variables to hold each setting, passed to owlCarousel function through the settings object */
   	var items;
     var singleItem;
-    var autoPlay
+    var autoPlay;
+    var navigation;
+    var pagination;
     
     /* ===========   Number of items onscreen   ================= */
     /* Number of items at max display size */
@@ -50,7 +53,24 @@ $(document).ready(function(){
       settings.navigation = navigation;
     }
     
+    /* ================== Pagination Options ======================== */
+    /* Display/Hide pagination */
+    var tempPag = $(getSS(curID, 'Pagination')).text();
+    console.log(tempPag);
+    if (!tempPag.localeCompare('none')==0) {
+      console.log('not none');
+      if (tempPag.localeCompare('true') == 0) {
+        pagination = true;
+      } else {
+        pagination = false;
+      }
+      settings.pagination = pagination;
+    }
+    
+    
+    
     /* Call the owlCarousel() method with the constructed settings object */
+    console.log(settings);
     $(this).owlCarousel(settings);
     
   });
