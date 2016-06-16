@@ -40,12 +40,16 @@
   <template:module path="*"/>
 </c:if>
 
-<div class="owl-carousel" id="carousel">
+<c:set var="thisID" value="${currentNode.properties['id'].string}"/>
+<c:set var="uniqueID" value="carousel${thisID}"/>
 
+<div class="owl-carousel carouselMain" id="${uniqueID}">
+
+ 
 <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
   <c:set var="pic" value="${curNode.properties['image']}"/>
   <c:url value="${pic.node.url}" var="imgUrl"></c:url>
-  <div class="item owl-item">
+  <div class="item">
   	<img src="${imgUrl}"/>
   </div>
 </c:forEach>

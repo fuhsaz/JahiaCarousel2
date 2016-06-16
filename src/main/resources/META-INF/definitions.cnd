@@ -4,6 +4,7 @@
 [jnt:carousel2] > jnt:content, jmix:droppableContent
  + * (jnt:carousel2Image)
  + * (jnt:carousel2Text)
+ - id (decimal, text) mandatory
 
 [jnt:carousel2Image] > jnt:content
  - image (weakreference, picker[type='image']) mandatory
