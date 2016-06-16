@@ -67,6 +67,7 @@
       <c:set var="items" value="none"/>
     </c:if>
     <div class="${uniqueID} carouselItems">${items}</div>
+  
     <!-- Set desktop browser width -->
     <c:if test="${empty currentNode.properties['changeDesktopItems']}">
       <c:set var="desktop" value="none"/>
@@ -94,6 +95,33 @@
     </c:if>
     <div class="${uniqueID} carouselChangeDesktopItems">${desktop}</div>
 
+  <!-- Set desktop browser width -->
+    <c:if test="${empty currentNode.properties['changeSmallDesktopItems']}">
+      <c:set var="smallDesktop" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['changeSmallDesktopItems']}">
+      <!-- Check if size was changed, otherwise set to default -->
+      <c:if test="${not empty currentNode.properties['changeSmallDesktopSize']}">
+        <c:set var="newSmallDesktopSize" value="${currentNode.properties['changeSmallDesktopSize'].string}"/>
+      </c:if>
+      <c:if test="${empty currentNode.properties['changeSmallDesktopSize']}">
+        <c:set var="newSmallDesktopSize" value="979"/>
+      </c:if>
+      <div class="${uniqueID} carouselChangeSmallDesktopSize">${newSmallDesktopSize}</div>
+      
+      <!-- Check if number of items was changed, otherwise set to default -->
+      <c:if test="${not empty currentNode.properties['changeSmallDesktopItemNumber']}"> 
+        <c:set var="newSmallDesktopItemNumber" value="${currentNode.properties['changeSmallDesktopItemNumber'].string}"/>
+      </c:if>
+      <c:if test="${empty currentNode.properties['changeSmallDesktopItemNumber']}">
+        <c:set var="newSmallDesktopItemNumber" value="4"/>
+      </c:if>
+      <div class="${uniqueID} carouselChangeSmallDesktopItemNumber">${newSmallDesktopItemNumber}</div>
+      
+      <c:set var="smallDesktop" value="changed"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeSmallDesktopItems">${smallDesktop}</div>
+  
   <!-- Option to display only a single item -->
   <c:if test="${empty currentNode.properties['items']}">
     <c:set var="singleItem" value="none"/>

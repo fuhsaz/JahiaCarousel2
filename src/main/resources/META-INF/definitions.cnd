@@ -12,9 +12,13 @@
  - navigation (boolean)
  - pagination (boolean)
  - paginationNumbers (boolean)
- - changeDesktopItems (boolean)
+ - desktopExplanation (undefined, text) itemtype = content
+ - changeDesktopItems (boolean) initialize
  - changeDesktopSize (decimal, text)
  - changeDesktopItemNumber (decimal, text)
+ - changeSmallDesktopItems (boolean)
+ - changeSmallDesktopSize (decimal, text)
+ - changeSmallDesktopItemNumber (decimal, text)
 
 [jnt:carousel2Image] > jnt:content
  - image (weakreference, picker[type='image']) mandatory

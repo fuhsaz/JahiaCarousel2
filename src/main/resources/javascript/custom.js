@@ -30,7 +30,16 @@ $(document).ready(function(){
       var newDesktopSizeArray = [newDesktopSize, newDesktopItem];
       settings.itemsDesktop = newDesktopSizeArray;
     }
-    
+    /* Change default small desktop lower bound or number of items */
+    var isSmallChanged = $(getSS(curID, 'ChangeSmallDesktopItems')).text();
+    if (isSmallChanged.localeCompare('changed')==0) {
+      var sizeSmallChanged = $(getSS(curID, 'ChangeSmallDesktopSize')).text();
+      var itemSmallChanged = $(getSS(curID, 'ChangeSmallDesktopItemNumber')).text();
+      var newSmallDesktopSize = parseInt(sizeSmallChanged);
+      var newSmallDesktopItem = parseInt(itemSmallChanged);
+      var newSmallDesktopSizeArray = [newSmallDesktopSize, newSmallDesktopItem];
+      settings.itemsDesktopSmall = newSmallDesktopSizeArray;
+    }
     /* Option to display only a single item */
     var tempSingle = $(getSS(curID, 'SingleItem')).text();
     if (!tempSingle.localeCompare('none')==0) {
