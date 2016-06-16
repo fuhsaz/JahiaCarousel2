@@ -94,7 +94,19 @@
       </c:if>
   </c:if>
   <div class="${uniqueID} carouselAutoPlay">${autoPlay}</div>
-  
+  <!-- Show or Hide Navigation Buttons -->
+  <c:if test="${empty currentNode.properties['navigation']}">
+    <c:set var="navigation" value="none"/>
+  </c:if>
+  <c:if test="${not empty currentNode.properties['navigation']}">
+    <c:if test="${currentNode.properties['navigation'].string == 'true'}">
+        <c:set var="navigation" value="true"/>
+    </c:if>
+    <c:if test="${currentNode.properties['navigation'].string == 'false'}">
+      <c:set var="navigation" value="false"/>
+    </c:if>
+  </c:if>
+  <div class="${uniqueID} carouselNavigation">${navigation}</div>
   
 </div>
 

@@ -39,6 +39,17 @@ $(document).ready(function(){
         }
       	settings.autoPlay = autoPlay;
     }
+    /* Enable/Disable Navigation Buttons */
+    var tempNav = $(getSS(curID, 'Navigation')).text();
+    if (!tempNav.localeCompare('none')==0) {
+      if (tempNav.localeCompare('true') == 0) {
+        navigation = true;
+      } else {
+        navigation = false;
+      }
+      settings.navigation = navigation;
+    }
+    
     /* Call the owlCarousel() method with the constructed settings object */
     $(this).owlCarousel(settings);
     

@@ -9,6 +9,7 @@
  - singleItem (boolean)
  - autoPlay (boolean)
  - autoPlayTime (decimal, text)
+ - navigation (boolean)
 
 [jnt:carousel2Image] > jnt:content
  - image (weakreference, picker[type='image']) mandatory
