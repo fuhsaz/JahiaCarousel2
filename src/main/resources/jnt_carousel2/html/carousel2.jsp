@@ -53,10 +53,10 @@
 
 <c:if test="${not renderContext.editMode}">
   <div class="hiddenVars ${uniqueID}">
-</c:if>
-<c:if test="${renderContext.editMode}">
-  <div class="${uniqueID}">
-</c:if>
+  </c:if>
+  <c:if test="${renderContext.editMode}">
+    <div class="${uniqueID}">
+    </c:if>
     
     <!-- ================== Number of items per page ======================== -->
     <!-- At max browser width -->
@@ -67,144 +67,138 @@
       <c:set var="items" value="none"/>
     </c:if>
     <div class="${uniqueID} carouselItems">${items}</div>
-  
-    <!-- Set desktop browser width -->
-  
-    <!-- Check if size was changed, otherwise set to default -->
-      <c:if test="${not empty currentNode.properties['desktopSize']}">
-        <c:set var="desktopSize" value="${currentNode.properties['desktopSize'].string}"/>
-      </c:if>
-      <c:if test="${empty currentNode.properties['desktopSize']}">
-        <c:set var="desktopSize" value="1199"/>
-      </c:if>
-  	  <div class="${uniqueID} carouselChangeDesktopSize">${desktopSize}</div>
-      
-      <!-- Check if number of items was changed, otherwise set to default -->
-      <c:if test="${not empty currentNode.properties['desktopItems']}"> 
-        <c:set var="desktopItems" value="${currentNode.properties['desktopItems'].string}"/>
-      </c:if>
-      <c:if test="${empty currentNode.properties['desktopItems']}">
-        <c:set var="desktopItems" value="4"/>
-      </c:if>
-      <div class="${uniqueID} carouselChangeDesktopItemNumber">${desktopItems}</div>
-      
-
-  <!-- Set small desktop browser width -->
-    <c:if test="${empty currentNode.properties['changeSmallDesktopItems']}">
-      <c:set var="smallDesktop" value="none"/>
-    </c:if>
-    <c:if test="${not empty currentNode.properties['changeSmallDesktopItems']}">
-      <!-- Check if size was changed, otherwise set to default -->
-      <c:if test="${not empty currentNode.properties['changeSmallDesktopSize']}">
-        <c:set var="newSmallDesktopSize" value="${currentNode.properties['changeSmallDesktopSize'].string}"/>
-      </c:if>
-      <c:if test="${empty currentNode.properties['changeSmallDesktopSize']}">
-        <c:set var="newSmallDesktopSize" value="979"/>
-      </c:if>
-      <div class="${uniqueID} carouselChangeSmallDesktopSize">${newSmallDesktopSize}</div>
-      
-      <!-- Check if number of items was changed, otherwise set to default -->
-      <c:if test="${not empty currentNode.properties['changeSmallDesktopItemNumber']}"> 
-        <c:set var="newSmallDesktopItemNumber" value="${currentNode.properties['changeSmallDesktopItemNumber'].string}"/>
-      </c:if>
-      <c:if test="${empty currentNode.properties['changeSmallDesktopItemNumber']}">
-        <c:set var="newSmallDesktopItemNumber" value="4"/>
-      </c:if>
-      <div class="${uniqueID} carouselChangeSmallDesktopItemNumber">${newSmallDesktopItemNumber}</div>
-      
-      <c:set var="smallDesktop" value="changed"/>
-    </c:if>
-    <div class="${uniqueID} carouselChangeSmallDesktopItems">${smallDesktop}</div>
-  
-  <!-- Option to display only a single item -->
-  <c:if test="${empty currentNode.properties['items']}">
-    <c:set var="singleItem" value="none"/>
-  </c:if>
-  <c:if test="${not empty currentNode.properties['items']}">
-    <c:if test="${currentNode.properties['singleItem'].string == 'true'}">
-      <c:set var="singleItem" value="true"/>
-    </c:if>
-    <c:if test="${currentNode.properties['singleItem'].string == 'false'}">
-      <c:set var="singleItem" value="false"/>
-    </c:if>
-  </c:if>
-  <div class="${uniqueID} carouselSingleItem">${singleItem}</div>
-  
-  <!-- ================== Navigation Options ======================== -->
-  <!-- Autoplay -->
-  <c:if test="${empty currentNode.properties['autoPlay']}">
-    <c:set var="autoPlay" value="none"/>
-  </c:if>
-  <c:if test="${not empty currentNode.properties['autoPlay']}">
-    <c:if test="${currentNode.properties['autoPlay'].string == 'true'}">
-      <c:if test="${empty currentNode.properties['autoPlayTime']}">
-        <c:set var="autoPlay" value="5000"/>
-      </c:if>
-      <c:if test="${not empty currentNode.properties['autoPlayTime']}">
-        <c:set var="autoPlay" value="${currentNode.properties['autoPlayTime'].string}"/>
-      </c:if>
-    </c:if>
-    <c:if test="${currentNode.properties['autoPlay'].string == 'false'}">
-      <c:set var="autoPlay" value="false"/>
-    </c:if>
-  </c:if>
-  <div class="${uniqueID} carouselAutoPlay">${autoPlay}</div>
-  <!-- Show or Hide Navigation Buttons -->
-  <c:if test="${empty currentNode.properties['navigation']}">
-    <c:set var="navigation" value="none"/>
-  </c:if>
-  <c:if test="${not empty currentNode.properties['navigation']}">
-    <c:if test="${currentNode.properties['navigation'].string == 'true'}">
-      <c:set var="navigation" value="true"/>
-    </c:if>
-    <c:if test="${currentNode.properties['navigation'].string == 'false'}">
-      <c:set var="navigation" value="false"/>
-    </c:if>
-  </c:if>
-  <div class="${uniqueID} carouselNavigation">${navigation}</div>
-  
-  <!-- ================== Pagination Options ======================== -->
-  <!-- Show/Hide pagination -->
-  <c:if test="${empty currentNode.properties['pagination']}">
-    <c:set var="pagination" value="none"/>
-  </c:if>
-  <c:if test="${not empty currentNode.properties['pagination']}">
-    <c:if test="${currentNode.properties['pagination'].string == 'true'}">
-      <c:set var="pagination" value="false"/>
-    </c:if>
-    <c:if test="${currentNode.properties['pagination'].string == 'false'}">
-      <c:set var="pagination" value="true"/>
-    </c:if>
-  </c:if>
-  <div class="${uniqueID} carouselPagination">${pagination}</div>
-  <!-- enable/disable pagination numbers -->
-  <c:if test="${empty currentNode.properties['paginationNumbers']}">
-    <c:set var="paginationNumbers" value="none"/>
-  </c:if>
-  <c:if test="${not empty currentNode.properties['paginationNumbers']}">
-    <c:if test="${currentNode.properties['paginationNumbers'].string == 'true'}">
-      <c:set var="paginationNumbers" value="true"/>
-    </c:if>
-    <c:if test="${currentNode.properties['paginationNumbers'].string == 'false'}">
-      <c:set var="paginationNumbers" value="false"/>
-    </c:if>
-  </c:if>
-  <div class="${uniqueID} carouselPaginationNumbers">${paginationNumbers}</div>
-  
-  
-  
-  
-</div>
-<c:if test="${not renderContext.editMode}">  
-  <div class="owl-carousel carouselMain" id="${uniqueID}">
     
-    <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
-      <c:set var="pic" value="${curNode.properties['image']}"/>
-      <c:url value="${pic.node.url}" var="imgUrl"></c:url>
-      <div class="item">
-        <img src="${imgUrl}"/>
-      </div>
-    </c:forEach>
+    <!-- Set desktop browser width -->
+    
+    <!-- Check if size was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['desktopSize']}">
+      <c:set var="desktopSize" value="${currentNode.properties['desktopSize'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['desktopSize']}">
+      <c:set var="desktopSize" value="1199"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeDesktopSize">${desktopSize}</div>
+    
+    <!-- Check if number of items was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['desktopItems']}"> 
+      <c:set var="desktopItems" value="${currentNode.properties['desktopItems'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['desktopItems']}">
+      <c:set var="desktopItems" value="4"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeDesktopItemNumber">${desktopItems}</div>
+    
+    
+    <!-- Set small desktop browser width -->
+    
+    <!-- Check if size was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['smallDesktopSize']}">
+      <c:set var="smallDesktopSize" value="${currentNode.properties['smallDesktopSize'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['smallDesktopSize']}">
+      <c:set var="smallDesktopSize" value="979"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeSmallDesktopSize">${smallDesktopSize}</div>
+    
+    <!-- Check if number of items was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['smallDesktopItems']}"> 
+      <c:set var="smallDesktopItems" value="${currentNode.properties['smallDesktopItems'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['smallDesktopItems']}">
+      <c:set var="smallDesktopItems" value="4"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeSmallDesktopItemNumber">${smallDesktopItems}</div>
+    
+   
+    <!-- Option to display only a single item -->
+    <c:if test="${empty currentNode.properties['items']}">
+      <c:set var="singleItem" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['items']}">
+      <c:if test="${currentNode.properties['singleItem'].string == 'true'}">
+        <c:set var="singleItem" value="true"/>
+      </c:if>
+      <c:if test="${currentNode.properties['singleItem'].string == 'false'}">
+        <c:set var="singleItem" value="false"/>
+      </c:if>
+    </c:if>
+    <div class="${uniqueID} carouselSingleItem">${singleItem}</div>
+    
+    <!-- ================== Navigation Options ======================== -->
+    <!-- Autoplay -->
+    <c:if test="${empty currentNode.properties['autoPlay']}">
+      <c:set var="autoPlay" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['autoPlay']}">
+      <c:if test="${currentNode.properties['autoPlay'].string == 'true'}">
+        <c:if test="${empty currentNode.properties['autoPlayTime']}">
+          <c:set var="autoPlay" value="5000"/>
+        </c:if>
+        <c:if test="${not empty currentNode.properties['autoPlayTime']}">
+          <c:set var="autoPlay" value="${currentNode.properties['autoPlayTime'].string}"/>
+        </c:if>
+      </c:if>
+      <c:if test="${currentNode.properties['autoPlay'].string == 'false'}">
+        <c:set var="autoPlay" value="false"/>
+      </c:if>
+    </c:if>
+    <div class="${uniqueID} carouselAutoPlay">${autoPlay}</div>
+    <!-- Show or Hide Navigation Buttons -->
+    <c:if test="${empty currentNode.properties['navigation']}">
+      <c:set var="navigation" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['navigation']}">
+      <c:if test="${currentNode.properties['navigation'].string == 'true'}">
+        <c:set var="navigation" value="true"/>
+      </c:if>
+      <c:if test="${currentNode.properties['navigation'].string == 'false'}">
+        <c:set var="navigation" value="false"/>
+      </c:if>
+    </c:if>
+    <div class="${uniqueID} carouselNavigation">${navigation}</div>
+    
+    <!-- ================== Pagination Options ======================== -->
+    <!-- Show/Hide pagination -->
+    <c:if test="${empty currentNode.properties['pagination']}">
+      <c:set var="pagination" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['pagination']}">
+      <c:if test="${currentNode.properties['pagination'].string == 'true'}">
+        <c:set var="pagination" value="false"/>
+      </c:if>
+      <c:if test="${currentNode.properties['pagination'].string == 'false'}">
+        <c:set var="pagination" value="true"/>
+      </c:if>
+    </c:if>
+    <div class="${uniqueID} carouselPagination">${pagination}</div>
+    <!-- enable/disable pagination numbers -->
+    <c:if test="${empty currentNode.properties['paginationNumbers']}">
+      <c:set var="paginationNumbers" value="none"/>
+    </c:if>
+    <c:if test="${not empty currentNode.properties['paginationNumbers']}">
+      <c:if test="${currentNode.properties['paginationNumbers'].string == 'true'}">
+        <c:set var="paginationNumbers" value="true"/>
+      </c:if>
+      <c:if test="${currentNode.properties['paginationNumbers'].string == 'false'}">
+        <c:set var="paginationNumbers" value="false"/>
+      </c:if>
+    </c:if>
+    <div class="${uniqueID} carouselPaginationNumbers">${paginationNumbers}</div>
+    
+    
+    
     
   </div>
-</c:if>
+  <c:if test="${not renderContext.editMode}">  
+    <div class="owl-carousel carouselMain" id="${uniqueID}">
+      
+      <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:carousel2Image')}" var="curNode">
+        <c:set var="pic" value="${curNode.properties['image']}"/>
+        <c:url value="${pic.node.url}" var="imgUrl"></c:url>
+        <div class="item">
+          <img src="${imgUrl}"/>
+        </div>
+      </c:forEach>
+      
+    </div>
+  </c:if>

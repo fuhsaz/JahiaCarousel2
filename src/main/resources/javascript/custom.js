@@ -21,25 +21,21 @@ $(document).ready(function(){
       settings.items = items;
     }
     /* Change default desktop lower bound or number of items */
-    var isChanged = $(getSS(curID, 'ChangeDesktopItems')).text();
-    if (isChanged.localeCompare('changed')==0) {
-      var sizeChanged = $(getSS(curID, 'ChangeDesktopSize')).text();
-      var itemChanged = $(getSS(curID, 'ChangeDesktopItemNumber')).text();
-      var newDesktopSize = parseInt(sizeChanged);
-      var newDesktopItem = parseInt(itemChanged);
-      var newDesktopSizeArray = [newDesktopSize, newDesktopItem];
-      settings.itemsDesktop = newDesktopSizeArray;
-    }
+    var sizeChanged = $(getSS(curID, 'ChangeDesktopSize')).text();
+    var itemChanged = $(getSS(curID, 'ChangeDesktopItemNumber')).text();
+    var newDesktopSize = parseInt(sizeChanged);
+    var newDesktopItem = parseInt(itemChanged);
+    var newDesktopSizeArray = [newDesktopSize, newDesktopItem];
+    settings.itemsDesktop = newDesktopSizeArray;
+    
     /* Change default small desktop lower bound or number of items */
-    var isSmallChanged = $(getSS(curID, 'ChangeSmallDesktopItems')).text();
-    if (isSmallChanged.localeCompare('changed')==0) {
-      var sizeSmallChanged = $(getSS(curID, 'ChangeSmallDesktopSize')).text();
-      var itemSmallChanged = $(getSS(curID, 'ChangeSmallDesktopItemNumber')).text();
-      var newSmallDesktopSize = parseInt(sizeSmallChanged);
-      var newSmallDesktopItem = parseInt(itemSmallChanged);
-      var newSmallDesktopSizeArray = [newSmallDesktopSize, newSmallDesktopItem];
-      settings.itemsDesktopSmall = newSmallDesktopSizeArray;
-    }
+	var sizeSmallChanged = $(getSS(curID, 'ChangeSmallDesktopSize')).text();
+    var itemSmallChanged = $(getSS(curID, 'ChangeSmallDesktopItemNumber')).text();
+    var newSmallDesktopSize = parseInt(sizeSmallChanged);
+    var newSmallDesktopItem = parseInt(itemSmallChanged);
+    var newSmallDesktopSizeArray = [newSmallDesktopSize, newSmallDesktopItem];
+    settings.itemsDesktopSmall = newSmallDesktopSizeArray;
+    
     /* Option to display only a single item */
     var tempSingle = $(getSS(curID, 'SingleItem')).text();
     if (!tempSingle.localeCompare('none')==0) {

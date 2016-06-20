@@ -1,7 +1,7 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 
-[jnt:carousel2] > jnt:content, jmix:droppableContent, jnt:changeDesktop
+[jnt:carousel2] > jnt:content, jmix:droppableContent, jnt:changeDesktop, jnt:changeSmallDesktop
  + * (jnt:carousel2Image)
  + * (jnt:carousel2Text)
  - id (decimal, text) mandatory
@@ -27,4 +27,8 @@
 [jnt:changeDesktop] mixin
  - desktopSize (decimal, text)
  - desktopItems (decimal, text)
+
+[jnt:changeSmallDesktop] mixin
+ - smallDesktopSize (decimal, text)
+ - smallDesktopItems (decimal, text)
 
