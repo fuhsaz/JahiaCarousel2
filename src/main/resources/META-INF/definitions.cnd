@@ -1,7 +1,7 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 
-[jnt:carousel2] > jnt:content, jmix:droppableContent
+[jnt:carousel2] > jnt:content, jmix:droppableContent, jnt:changeDesktop
  + * (jnt:carousel2Image)
  + * (jnt:carousel2Text)
  - id (decimal, text) mandatory
@@ -12,10 +12,6 @@
  - navigation (boolean)
  - pagination (boolean)
  - paginationNumbers (boolean)
- - desktopExplanation (undefined, text) itemtype = content
- - changeDesktopItems (boolean) initialize
- - changeDesktopSize (decimal, text)
- - changeDesktopItemNumber (decimal, text)
  - changeSmallDesktopItems (boolean)
  - changeSmallDesktopSize (decimal, text)
  - changeSmallDesktopItemNumber (decimal, text)
@@ -27,4 +23,8 @@
  - title (string)
  - text (string, textarea)
  - quoteAuthor (string)
+
+[jnt:changeDesktop] mixin
+ - desktopSize (decimal, text)
+ - desktopItems (decimal, text)
 

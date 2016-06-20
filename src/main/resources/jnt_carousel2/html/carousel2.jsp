@@ -69,33 +69,27 @@
     <div class="${uniqueID} carouselItems">${items}</div>
   
     <!-- Set desktop browser width -->
-    <c:if test="${empty currentNode.properties['changeDesktopItems']}">
-      <c:set var="desktop" value="none"/>
-    </c:if>
-    <c:if test="${not empty currentNode.properties['changeDesktopItems']}">
-      <!-- Check if size was changed, otherwise set to default -->
-      <c:if test="${not empty currentNode.properties['changeDesktopSize']}">
-        <c:set var="newDesktopSize" value="${currentNode.properties['changeDesktopSize'].string}"/>
+  
+    <!-- Check if size was changed, otherwise set to default -->
+      <c:if test="${not empty currentNode.properties['desktopSize']}">
+        <c:set var="desktopSize" value="${currentNode.properties['desktopSize'].string}"/>
       </c:if>
-      <c:if test="${empty currentNode.properties['changeDesktopSize']}">
-        <c:set var="newDesktopSize" value="1199"/>
+      <c:if test="${empty currentNode.properties['desktopSize']}">
+        <c:set var="desktopSize" value="1199"/>
       </c:if>
-      <div class="${uniqueID} carouselChangeDesktopSize">${newDesktopSize}</div>
+  	  <div class="${uniqueID} carouselChangeDesktopSize">${desktopSize}</div>
       
       <!-- Check if number of items was changed, otherwise set to default -->
-      <c:if test="${not empty currentNode.properties['changeDesktopItemNumber']}"> 
-        <c:set var="newDesktopItemNumber" value="${currentNode.properties['changeDesktopItemNumber'].string}"/>
+      <c:if test="${not empty currentNode.properties['desktopItems']}"> 
+        <c:set var="desktopItems" value="${currentNode.properties['desktopItems'].string}"/>
       </c:if>
-      <c:if test="${empty currentNode.properties['changeDesktopItemNumber']}">
-        <c:set var="newDesktopItemNumber" value="4"/>
+      <c:if test="${empty currentNode.properties['desktopItems']}">
+        <c:set var="desktopItems" value="4"/>
       </c:if>
-      <div class="${uniqueID} carouselChangeDesktopItemNumber">${newDesktopItemNumber}</div>
+      <div class="${uniqueID} carouselChangeDesktopItemNumber">${desktopItems}</div>
       
-      <c:set var="desktop" value="changed"/>
-    </c:if>
-    <div class="${uniqueID} carouselChangeDesktopItems">${desktop}</div>
 
-  <!-- Set desktop browser width -->
+  <!-- Set small desktop browser width -->
     <c:if test="${empty currentNode.properties['changeSmallDesktopItems']}">
       <c:set var="smallDesktop" value="none"/>
     </c:if>

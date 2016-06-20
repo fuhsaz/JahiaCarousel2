@@ -63,7 +63,7 @@
     <developerConnection>scm:git:git@github.com:fuhsaz/JahiaCarousel2.git</developerConnection>
   </scm>
   <properties>
-    <jahia-depends></jahia-depends>
+    <jahia-depends>bootstrap3-components,bootstrap3-core,default</jahia-depends>
   </properties>
   <repositories>
     <repository>
