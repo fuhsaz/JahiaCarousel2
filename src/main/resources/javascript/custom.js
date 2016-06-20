@@ -36,6 +36,28 @@ $(document).ready(function(){
     var newSmallDesktopSizeArray = [newSmallDesktopSize, newSmallDesktopItem];
     settings.itemsDesktopSmall = newSmallDesktopSizeArray;
     
+    /* Change default tablet lower bound or number of items */
+	var sizeTabletChanged = $(getSS(curID, 'ChangeTabletSize')).text();
+    var itemTabletChanged = $(getSS(curID, 'ChangeTabletItemNumber')).text();
+    var newTabletSize = parseInt(sizeTabletChanged);
+    var newTabletItem = parseInt(itemTabletChanged);
+    var newTabletSizeArray = [newTabletSize, newTabletItem];
+    settings.itemsTablet = newTabletSizeArray;
+    
+    /* Change default small tablet lower bound or number of items */
+    /* First check if anything was even changed, because the default is false */
+    var output = $(getSS(curID, 'SmallTabletChanged')).text();
+    if (output.localeCompare('false')==0) {
+     	var newSmallTabletSizeArray = false; 
+    } else {
+		var sizeSmallTabletChanged = $(getSS(curID, 'ChangeSmallTabletSize')).text();
+    	var itemSmallTabletChanged = $(getSS(curID, 'ChangeSmallTabletItemNumber')).text();
+    	var newSmallTabletSize = parseInt(sizeSmallTabletChanged);
+    	var newSmallTabletItem = parseInt(itemSmallTabletChanged);
+    	var newSmallTabletSizeArray = [newSmallTabletSize, newSmallTabletItem];
+    }
+    settings.itemsTabletSmall = newSmallTabletSizeArray;
+    
     /* Option to display only a single item */
     var tempSingle = $(getSS(curID, 'SingleItem')).text();
     if (!tempSingle.localeCompare('none')==0) {

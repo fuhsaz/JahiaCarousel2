@@ -109,6 +109,53 @@
     </c:if>
     <div class="${uniqueID} carouselChangeSmallDesktopItemNumber">${smallDesktopItems}</div>
     
+    
+    <!-- Set tablet browser width -->
+    
+    <!-- Check if size was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['tabletSize']}">
+      <c:set var="tabletSize" value="${currentNode.properties['tabletSize'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['tabletSize']}">
+      <c:set var="tabletSize" value="979"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeTabletSize">${tabletSize}</div>
+    
+    <!-- Check if number of items was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['tabletItems']}"> 
+      <c:set var="tabletItems" value="${currentNode.properties['tabletItems'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['tabletItems']}">
+      <c:set var="tabletItems" value="4"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeTabletItemNumber">${tabletItems}</div>
+    
+    
+    <!-- Set small tablet browser width -->
+    
+    <!-- Because it's false by default, if neither is changed, just say false -->
+    <c:if test="${empty currentNode.properties['smallTabletSize'] && empty currentNode.properties['smallTabletItems']}">
+      <div class="${uniqueID} carouselSmallTabletChanged">false</div>
+    </c:if>
+    
+    <!-- Check if size was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['smallTabletSize']}">
+      <c:set var="smallTabletSize" value="${currentNode.properties['smallTabletSize'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['smallTabletSize']}">
+      <c:set var="smallTabletSize" value="979"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeSmallTabletSize">${smallTabletSize}</div>
+    
+    <!-- Check if number of items was changed, otherwise set to default -->
+    <c:if test="${not empty currentNode.properties['smallTabletItems']}"> 
+      <c:set var="smallTabletItems" value="${currentNode.properties['smallTabletItems'].string}"/>
+    </c:if>
+    <c:if test="${empty currentNode.properties['smallTabletItems']}">
+      <c:set var="smallTabletItems" value="4"/>
+    </c:if>
+    <div class="${uniqueID} carouselChangeSmallTabletItemNumber">${smallTabletItems}</div>
+    
    
     <!-- Option to display only a single item -->
     <c:if test="${empty currentNode.properties['items']}">
